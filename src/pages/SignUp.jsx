@@ -6,7 +6,7 @@ import { useHistory, Redirect } from "react-router-dom";
 import { signIn } from "../authSlice";
 import { Header } from "../components/Header";
 import { url } from "../const";
-import "./signUp.css";
+import "./signUp.scss";
 
 export const SignUp = () => {
   const history = useHistory();
@@ -26,7 +26,7 @@ export const SignUp = () => {
       name: name,
       password: password,
     };
-
+    console.log(url)
     axios
       .post(`${url}/users`, data)
       .then((res) => {

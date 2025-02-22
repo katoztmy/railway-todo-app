@@ -3,7 +3,7 @@ import { useCookies } from "react-cookie";
 import axios from "axios";
 import { url } from "../const";
 import { Header } from "../components/Header";
-import "./newTask.css";
+import "./newTask.scss";
 import { useHistory } from "react-router-dom";
 
 export const NewTask = () => {
@@ -81,6 +81,11 @@ export const NewTask = () => {
             onChange={handleTitleChange}
             className="new-task-title"
           />
+          <br />
+          <label htmlFor="time">期限日時</label>
+          <br />
+          <input type="date" value="2025-01-10"/>
+          <input type="time" />
           <br />
           <label>詳細</label>
           <br />
