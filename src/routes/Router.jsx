@@ -19,7 +19,8 @@ export const Router = () => {
         <Route exact path="/signin" component={SignIn} />
         <Route exact path="/signup" component={SignUp} />
         {auth ? (
-          <>
+          <Switch>
+            {" "}
             <Route exact path="/" component={Home} />
             <Route exact path="/task/new" component={NewTask} />
             <Route exact path="/list/new" component={NewList} />
@@ -29,7 +30,7 @@ export const Router = () => {
               component={EditTask}
             />
             <Route exact path="/lists/:listId/edit" component={EditList} />
-          </>
+          </Switch>
         ) : (
           <Redirect to="/signin" />
         )}

@@ -153,21 +153,32 @@ const Tasks = (props) => {
   return (
     <ul>
       {tasks
-        .filter((task) => {
-          return task.done === false;
-        })
-        .map((task, key) => (
-          <li key={key} className="task-item">
-            <Link
-              to={`/lists/${selectListId}/tasks/${task.id}`}
-              className="task-item-link"
-            >
-              {task.title}
-              <br />
-              {task.done ? "完了" : "未完了"}
-            </Link>
-          </li>
-        ))}
+        .filter((task) => !task.done)
+        .map((task, key) => {
+          const formattedDateTime = task.limit
+            ? new Date(task.limit).toLocaleString("ja-JP")
+            : "設定なし";
+
+          return (
+            <li key={key} className="task-item">
+              <Link
+                to={`/lists/${selectListId}/tasks/${task.id}`}
+                className="task-item-link"
+              >
+                {task.title}
+                <br />
+                {task.done ? "完了" : "未完了"}
+                {console.log(new Date(task.limit), "task.limit")}
+                {console.log(
+                  new Date(task.limit).toLocaleString("ja-JP"),
+                  "ja-jp",
+                )}
+
+                <p className="due-time">{`期限日時：${formattedDateTime}`}</p>
+              </Link>
+            </li>
+          );
+        })}
     </ul>
   );
 };
