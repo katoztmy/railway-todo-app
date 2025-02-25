@@ -149,8 +149,7 @@ export const EditTask = () => {
           <br />
           <input type="date" value={date} onChange={handleDateChange} />
           <input type="time" value={time} onChange={handleTimeChange} />
-          {remainingTime}
-          <br />
+          <p className="limit-p">{remainingTime}</p>
           <br />
           <div>
             <input

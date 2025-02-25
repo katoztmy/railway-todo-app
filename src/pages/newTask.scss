@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 .new-task {
-  width: 1000px;
+  width: 98%;
   margin: 0 auto;
 }
 
@@ -30,4 +30,18 @@
 
 .error-message {
   color: #ff3333;
+}
+
+@media screen and (max-width: 768px) {
+  .new-task {
+    width: 95%;
+    padding: 15px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .new-task {
+    width: 100%;
+    padding: 10px;
+  }
 }

@@ -14,6 +14,7 @@ export const Home = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [cookies] = useCookies();
   const handleIsDoneDisplayChange = (e) => setIsDoneDisplay(e.target.value);
+
   useEffect(() => {
     axios
       .get(`${url}/lists`, {
@@ -82,14 +83,17 @@ export const Home = () => {
               </p>
             </div>
           </div>
-          <ul className="list-tab">
+          <ul className="list-tab" role="tablist">
             {lists.map((list, key) => {
               const isActive = list.id === selectListId;
               return (
                 <li
+                  role="tab"
+                  aria-selected={isActive}
                   key={key}
                   className={`list-tab-item ${isActive ? "active" : ""}`}
                   onClick={() => handleSelectList(list.id)}
+                  tabIndex={0}
                 >
                   {list.title}
                 </li>
@@ -156,7 +160,7 @@ const Tasks = (props) => {
         .filter((task) => !task.done)
         .map((task, key) => {
           const formattedDateTime = task.limit
-            ? new Date(task.limit).toLocaleString("ja-JP")
+            ? new Date(task.limit).toLocaleString("ja-JP").slice(0, -3)
             : "設定なし";
 
           return (
@@ -168,12 +172,6 @@ const Tasks = (props) => {
                 {task.title}
                 <br />
                 {task.done ? "完了" : "未完了"}
-                {console.log(new Date(task.limit), "task.limit")}
-                {console.log(
-                  new Date(task.limit).toLocaleString("ja-JP"),
-                  "ja-jp",
-                )}
-
                 <p className="due-time">{`期限日時：${formattedDateTime}`}</p>
               </Link>
             </li>

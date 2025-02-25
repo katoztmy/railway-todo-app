@@ -1,16 +1,21 @@
 .taskList {
   margin: 50px auto;
   list-style: none;
-  width: 1000px;
+  width: 90%;
+  max-width: 1000px;
 }
 
 .list-header {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .list-menu {
   text-align: right;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .list-tab {
@@ -46,7 +51,7 @@
 
 .task-item {
   list-style-type: none;
-  height: 70px;
+  height: 100px;
   width: calc(100% - 25px);
   background-color: #f5f5f5;
   padding-left: 25px;
@@ -79,4 +84,30 @@
   display: inline;
   padding-left: 20px;
   font-size: 16px;
+}
+
+@media screen and (max-width: 768px) {
+  .taskList {
+    width: 95%;
+    margin: 30px auto;
+  }
+  .list-header {
+    padding: 0 10px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .due-time {
+    display: block;
+    padding-left: 0;
+    margin-top: 5px;
+  }
+
+  .task-item {
+    min-height: 100px;
+    height: auto;
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+  }
 }

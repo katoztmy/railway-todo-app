@@ -16,7 +16,7 @@
 
 .email-input,
 .password-input {
-  width: 100%;
+  width: px;
   font-size: large;
   height: 30px;
   margin-bottom: 25px;
@@ -32,4 +32,10 @@
 
 .error-message {
   color: #ff3333;
+}
+
+@media screen and (max-width: 320px) {
+  .signin {
+    width: 90%;
+  }
 }

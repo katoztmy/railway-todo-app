@@ -35,3 +35,17 @@
 .error-message {
   color: #ff3333;
 }
+
+.limit-p {
+  color: red;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+  .edit-task {
+    width: 98%;
+  }
+}
+
+@media screen and (max-width: 320px) {
+}
