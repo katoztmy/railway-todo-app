@@ -14,6 +14,36 @@ export const Home = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [cookies] = useCookies();
   const handleIsDoneDisplayChange = (e) => setIsDoneDisplay(e.target.value);
+  const onClickKeyDown = (e) => {
+    const currentElement = e.target;
+    console.log(currentElement, "currentElement");
+    const listItems = Array.from(document.querySelectorAll(".list-tab-item"));
+    const currentIndex = listItems.indexOf(currentElement);
+    console.log(currentIndex, "currentIndex");
+
+    switch (e.key) {
+      case "ArrowLeft":
+        e.preventDefault();
+        console.log(currentIndex);
+        const prevIndex =
+          currentIndex > 0 ? currentIndex - 1 : listItems.length - 1;
+        listItems[prevIndex].focus();
+        break;
+
+      case "ArrowRight":
+        e.preventDefault();
+        console.log(currentIndex);
+        const nextIndex =
+          currentIndex < listItems.length - 1 ? currentIndex + 1 : 0;
+        listItems[nextIndex].focus();
+        break;
+
+      case "Enter":
+        e.preventDefault();
+        handleSelectList(lists[currentIndex].id);
+        break;
+    }
+  };
 
   useEffect(() => {
     axios
@@ -94,6 +124,7 @@ export const Home = () => {
                   className={`list-tab-item ${isActive ? "active" : ""}`}
                   onClick={() => handleSelectList(list.id)}
                   tabIndex={0}
+                  onKeyDown={onClickKeyDown}
                 >
                   {list.title}
                 </li>
