@@ -16,8 +16,8 @@ export const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/signin" component={SignIn} />
-        <Route exact path="/signup" component={SignUp} />
+        <Route exact path="/signin" element={<SignIn />} />
+        <Route exact path="/signup" element={<SignUp />} />
         {auth ? (
           <>
             <Route path="/" element={<Home />} />
@@ -27,9 +27,9 @@ export const Router = () => {
             <Route path="/lists/:listId/edit" element={<EditList />} />
           </>
         ) : (
-          <Navigate to="/signin" />
+          <Route path="*" element={<Navigate to={"/signin"} />} />
         )}
-        <Route component={NotFound} />
+        <Route element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
