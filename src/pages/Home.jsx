@@ -106,11 +106,13 @@ export const Home = () => {
               <p>
                 <Link to="/list/new">リスト新規作成</Link>
               </p>
-              <p>
-                <Link to={`/lists/${selectListId}/edit`}>
-                  選択中のリストを編集
-                </Link>
-              </p>
+              {lists.length > 0 ? (
+                <p>
+                  <Link to={`/lists/${selectListId}/edit`}>
+                    選択中のリストを編集
+                  </Link>
+                </p>
+              ) : null}
             </div>
           </div>
           <ul className="list-tab" role="tablist">
@@ -157,7 +159,6 @@ export const Home = () => {
   );
 };
 
-// 表示するタスク
 const Tasks = (props) => {
   const { tasks, selectListId, isDoneDisplay } = props;
   if (tasks === null) return <></>;

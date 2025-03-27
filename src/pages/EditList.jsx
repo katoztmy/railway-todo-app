@@ -56,6 +56,7 @@ export const EditList = () => {
       })
       .then((res) => {
         const list = res.data;
+        console.log(list);
         setTitle(list.title);
       })
       .catch((err) => {
